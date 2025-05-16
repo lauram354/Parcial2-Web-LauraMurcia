@@ -4,9 +4,13 @@ import { AppService } from './app.service';
 import { EstudianteModule } from './estudiante/estudiante.module';
 import { ActividadModule } from './actividad/actividad.module';
 import { ReseniaModule } from './resenia/resenia.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { EstudianteEntity } from './estudiante/estudiante.entity/estudiante.entity';
+import { ActividadEntity } from './actividad/actividad.entity/actividad.entity';
+import { ReseniaEntity } from './resenia/resenia.entity/resenia.entity';
 
 @Module({
-  imports: [EstudianteModule, ActividadModule, ReseniaModule],
+  imports: [EstudianteModule, ActividadModule, ReseniaModule ],
   controllers: [AppController],
   providers: [AppService],
 })
