@@ -10,7 +10,19 @@ import { ActividadEntity } from './actividad/actividad.entity/actividad.entity';
 import { ReseniaEntity } from './resenia/resenia.entity/resenia.entity';
 
 @Module({
-  imports: [EstudianteModule, ActividadModule, ReseniaModule ],
+  imports: [EstudianteModule, ActividadModule, ReseniaModule,
+   TypeOrmModule.forRoot({
+     type: 'postgres',
+     host: 'localhost',
+     port: 5432,
+     username: 'postgres',
+     password: 'postgres',
+     database: 'parcial2',
+     entities: [EstudianteEntity, ActividadEntity, ReseniaEntity],
+     dropSchema: true,
+     synchronize: true
+   }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
