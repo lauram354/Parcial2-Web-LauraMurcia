@@ -21,7 +21,7 @@ export class ReseniaService {
     ){}
 
     async agregarResenia(resenia: ReseniaEntity): Promise<ReseniaEntity> {
-        const estudiante = await this.estudianteRepository.findOne({where:{id: resenia.estudiante.id}});
+        const estudiante = await this.estudianteRepository.findOne({where:{id: resenia.estudiante.id}, relations:["actividades"]});
          if (!estudiante)
              throw new BusinessLogicException("estudiante no existe", BusinessError.NOT_FOUND);
         
@@ -29,7 +29,7 @@ export class ReseniaService {
          if (!actividad)
              throw new BusinessLogicException("actividad no existe", BusinessError.NOT_FOUND);
 
-         if (!estudiante.actividades.includes(actividad))
+         if (!estudiante.actividades.some(act => act.id === actividad.id))
              throw new BusinessLogicException("estudiante no estuvo inscrito", BusinessError.PRECONDITION_FAILED);
 
          if (actividad.estado !== 2)
