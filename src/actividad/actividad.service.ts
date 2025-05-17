@@ -17,7 +17,7 @@ export class ActividadService {
 
     async crearActividad(actividad: ActividadEntity): Promise<ActividadEntity> {
         const pattern =  /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-        if (!pattern.test(actividad.titulo))
+        if (pattern.test(actividad.titulo))
             throw new BusinessLogicException("El titulo tiene caracteres especiales", BusinessError.PRECONDITION_FAILED);
             
         if (actividad.titulo.length < 15)
