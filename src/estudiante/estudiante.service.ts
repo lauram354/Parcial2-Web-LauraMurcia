@@ -40,7 +40,7 @@ export class EstudianteService {
     }
 
     async inscribirseActividad(estudianteId: number, actividadId: number): Promise<EstudianteEntity> {
-       const actividad = await this.actividadRepository.findOne({where: {id: actividadId}});
+       const actividad = await this.actividadRepository.findOne({where: {id: actividadId}, relations: ["estudiantes"],});
        if (!actividad)
          throw new BusinessLogicException("The actividad with the given id was not found", BusinessError.NOT_FOUND);
      
@@ -48,7 +48,7 @@ export class EstudianteService {
        if (!estudiante)
          throw new BusinessLogicException("The student with the given id was not found", BusinessError.NOT_FOUND);
    
-       if (actividad.cupo < 1 )
+       if (0.8*(actividad.cupo) <  actividad.estudiantes.length + 1)
             throw new BusinessLogicException("No hay cupo", BusinessError.PRECONDITION_FAILED);
 
        if (actividad.estado !== 0 )

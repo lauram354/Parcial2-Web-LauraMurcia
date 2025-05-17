@@ -22,14 +22,23 @@ export class ActividadService {
             
         if (actividad.titulo.length < 15)
             throw new BusinessLogicException("El titulo debe tener 15 caracteres", BusinessError.PRECONDITION_FAILED);
+
+        if (actividad.estado !== 0)
+            throw new BusinessLogicException("No se creo la actividad como abierta", BusinessError.PRECONDITION_FAILED);
         
         return await this.actividadRepository.save(actividad);
    }
 
    async cambiarEstado(id: number, estado: number): Promise<ActividadEntity> {
-        const persistedActividad = await this.actividadRepository.findOne({where:{id}});
+        const persistedActividad = await this.actividadRepository.findOne({where:{id}, relations:["estudiantes"]});
         if (!persistedActividad)
           throw new BusinessLogicException("No se encontró la actividad", BusinessError.NOT_FOUND);
+        
+        if ((0.8*persistedActividad.cupo) <= persistedActividad.estudiantes.length + 1 && estado === 1)
+            throw new BusinessLogicException("El cupo no es mayor al 80%, no se puede cerrar", BusinessError.PRECONDITION_FAILED);
+        
+        if (persistedActividad.cupo > persistedActividad.estudiantes.length && estado === 2)
+            throw new BusinessLogicException("El cupo no esta lleno, no se puede finalizar", BusinessError.PRECONDITION_FAILED);
 
         persistedActividad.estado = estado
         
