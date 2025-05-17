@@ -5,9 +5,10 @@ import { EstudianteModule } from './estudiante/estudiante.module';
 import { ActividadModule } from './actividad/actividad.module';
 import { ReseniaModule } from './resenia/resenia.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { EstudianteEntity } from './estudiante/estudiante.entity';
-import { ActividadEntity } from './actividad/actividad.entity';
-import { ReseniaEntity } from './resenia/resenia.entity';
+import { ActividadEntity } from './actividad/actividad.entity/actividad.entity';
+import { EstudianteEntity } from './estudiante/estudiante.entity/estudiante.entity';
+import { ReseniaEntity } from './resenia/resenia.entity/resenia.entity';
+
 
 @Module({
   imports: [EstudianteModule, ActividadModule, ReseniaModule,
