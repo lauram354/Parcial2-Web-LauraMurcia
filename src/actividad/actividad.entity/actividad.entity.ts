@@ -1,5 +1,5 @@
-import { EstudianteEntity } from 'src/estudiante/estudiante.entity/estudiante.entity';
-import { ReseniaEntity } from 'src/resenia/resenia.entity/resenia.entity';
+import { EstudianteEntity } from '../../estudiante/estudiante.entity/estudiante.entity';
+import { ReseniaEntity } from '../../resenia/resenia.entity/resenia.entity';
 import { Column, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

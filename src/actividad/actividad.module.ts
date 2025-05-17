@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ActividadService } from './actividad.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ActividadEntity } from './actividad.entity/actividad.entity';
+import { ActividadEntity } from './actividad.entity';
 import { ActividadController } from './actividad.controller';
 
 @Module({

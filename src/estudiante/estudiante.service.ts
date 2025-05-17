@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { BusinessError, BusinessLogicException } from 'src/shared/errors/business-errors';
+import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
 import { EstudianteEntity } from './estudiante.entity/estudiante.entity';
-import { ActividadEntity } from 'src/actividad/actividad.entity/actividad.entity';
+import { ActividadEntity } from '../actividad/actividad.entity/actividad.entity';
+
 
 @Injectable()
 export class EstudianteService {
@@ -53,8 +54,8 @@ export class EstudianteService {
        if (actividad.estado !== 0 )
             throw new BusinessLogicException("No es valido el estado", BusinessError.PRECONDITION_FAILED);
 
-       if (estudiante.actividades.includes(actividad))
-            throw new BusinessLogicException("Ya existia la inscripcion ", BusinessError.PRECONDITION_FAILED);
+       if (estudiante.actividades.some(a => a.id === actividad.id))
+            throw new BusinessLogicException("Hay una inscripcion previa", BusinessError.PRECONDITION_FAILED);
 
        estudiante.actividades = [...estudiante.actividades, actividad];
        return await this.estudianteRepository.save(estudiante);

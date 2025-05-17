@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { BusinessError, BusinessLogicException } from 'src/shared/errors/business-errors';
+import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
 import { ReseniaEntity } from './resenia.entity/resenia.entity';
-import { EstudianteEntity } from 'src/estudiante/estudiante.entity/estudiante.entity';
-import { ActividadEntity } from 'src/actividad/actividad.entity/actividad.entity';
+import { EstudianteEntity } from '../estudiante/estudiante.entity/estudiante.entity';
+import { ActividadEntity } from '../actividad/actividad.entity/actividad.entity';
 
 @Injectable()
 export class ReseniaService {

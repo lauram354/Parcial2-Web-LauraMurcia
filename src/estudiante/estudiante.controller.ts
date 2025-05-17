@@ -1,9 +1,9 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, UseInterceptors } from '@nestjs/common';
-import { BusinessErrorsInterceptor } from 'src/shared/interceptors/business-errors/business-errors.interceptor';
+import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors/business-errors.interceptor';
 import { EstudianteService } from './estudiante.service';
 import { EstudianteDto } from './estudiante.dto/estudiante.dto';
-import { EstudianteEntity } from './estudiante.entity/estudiante.entity';
 import { plainToInstance } from 'class-transformer';
+import { EstudianteEntity } from './estudiante.entity/estudiante.entity';
 
 
 @Controller('estudiante')
