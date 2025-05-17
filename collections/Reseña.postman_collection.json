@@ -1,0 +1,1044 @@
+{
+	"info": {
+		"_postman_id": "ca12ff93-3bfc-4e9f-8886-a11771710eb1",
+		"name": "Reseña",
+		"description": "Dentro de esta colección se definen las pruebas para el servicio de reseña. En esta se incluye una prueba para crear la reseña y pruebas adicionales en donde se ve que la prueba falla cuando no existen estudiantes o actividades, cuando la actividad no está finalizada, y cuando el estudiante no está inscrito.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32524555"
+	},
+	"item": [
+		{
+			"name": "Crear estudiante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"estudiante_id\", data.id);\r",
+							"pm.globals.set(\"estudiante\", data);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"cedula\": 112233445,\r\n     \"nombre\": \"nombre\",\r\n     \"correo\": \"usuario@test.com\",\r\n     \"programa\": \"ingenieria\",\r\n     \"semestre\": 6,\r\n     \"resenias\": [],\r\n     \"actividades\": []\r\n\r\n   }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/estudiante",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"estudiante"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear estudiante",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"cedula\": 112233445,\r\n     \"nombre\": \"nombre\",\r\n     \"correo\": \"usuario@test.com\",\r\n     \"programa\": \"ingenieria\",\r\n     \"semestre\": 6,\r\n     \"resenias\": [],\r\n     \"actividades\": []\r\n\r\n   }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/estudiante",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiante"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date"
+						}
+					],
+					"body": "{\n    \"id\": 1,\n    \"cedula\": 112233445,\n    \"nombre\": \"nombre\",\n    \"correo\": \"usuario@test.com\",\n    \"programa\": \"ingenieria\",\n    \"semestre\": 6,\n    \"resenias\": [],\n    \"actividades\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear estudiante2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"estudiante_id2\", data.id);\r",
+							"pm.globals.set(\"estudiante\", data);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"cedula\": 112233445,\r\n     \"nombre\": \"nombre\",\r\n     \"correo\": \"usuario@test.com\",\r\n     \"programa\": \"ingenieria\",\r\n     \"semestre\": 6,\r\n     \"resenias\": [],\r\n     \"actividades\": []\r\n\r\n   }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/estudiante",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"estudiante"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear estudiante",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"cedula\": 112233445,\r\n     \"nombre\": \"nombre\",\r\n     \"correo\": \"usuario@test.com\",\r\n     \"programa\": \"ingenieria\",\r\n     \"semestre\": 6,\r\n     \"resenias\": [],\r\n     \"actividades\": []\r\n\r\n   }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/estudiante",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiante"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date"
+						}
+					],
+					"body": "{\n    \"id\": 1,\n    \"cedula\": 112233445,\n    \"nombre\": \"nombre\",\n    \"correo\": \"usuario@test.com\",\n    \"programa\": \"ingenieria\",\n    \"semestre\": 6,\n    \"resenias\": [],\n    \"actividades\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear actividad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"actividad_id\", data.id);\r",
+							"pm.globals.set(\"actividad\", data);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"titulo\": \"titulodeactividad\",\r\n      \"fecha\": \"17/05/2025\",\r\n      \"cupo\": 3,\r\n      \"estado\": 0,\r\n      \"estudiantes\": [],\r\n      \"resenias\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/actividad",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"actividad"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear actividad",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"titulo\": \"titulodeactividad\",\r\n      \"fecha\": \"17/05/2025\",\r\n      \"cupo\": 10,\r\n      \"estado\": 0,\r\n      \"estudiantes\": [],\r\n      \"resenias\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/actividad",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"actividad"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date"
+						}
+					],
+					"body": "{\n    \"id\": 1,\n    \"titulo\": \"titulodeactividad\",\n    \"fecha\": \"17/05/2025\",\n    \"cupo\": 10,\n    \"estado\": 0,\n    \"resenias\": [],\n    \"estudiantes\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear actividad 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"actividad_id2\", data.id);\r",
+							"pm.globals.set(\"actividad\", data);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"titulo\": \"titulodeactividad\",\r\n      \"fecha\": \"17/05/2025\",\r\n      \"cupo\": 3,\r\n      \"estado\": 0,\r\n      \"estudiantes\": [],\r\n      \"resenias\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/actividad",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"actividad"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear actividad",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"titulo\": \"titulodeactividad\",\r\n      \"fecha\": \"17/05/2025\",\r\n      \"cupo\": 10,\r\n      \"estado\": 0,\r\n      \"estudiantes\": [],\r\n      \"resenias\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/actividad",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"actividad"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date"
+						}
+					],
+					"body": "{\n    \"id\": 1,\n    \"titulo\": \"titulodeactividad\",\n    \"fecha\": \"17/05/2025\",\n    \"cupo\": 10,\n    \"estado\": 0,\n    \"resenias\": [],\n    \"estudiantes\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Inscribirse en actividad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/estudiante/{{estudiante_id}}/actividades/{{actividad_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"estudiante",
+						"{{estudiante_id}}",
+						"actividades",
+						"{{actividad_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Inscribirse en actividad",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/estudiante/{{estudiante_id}}/actividades/{{actividad_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiante",
+								"{{estudiante_id}}",
+								"actividades",
+								"{{actividad_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date"
+						}
+					],
+					"body": "{\r\n    \"id\": 2,\r\n    \"cedula\": 112233445,\r\n    \"nombre\": \"nombre\",\r\n    \"correo\": \"usuario@test.com\",\r\n    \"programa\": \"ingenieria\",\r\n    \"semestre\": 6,\r\n    \"resenias\": [],\r\n    \"actividades\": [\r\n        {\r\n            \"id\": 3,\r\n            \"titulo\": \"titulodeactividad\",\r\n            \"fecha\": \"17/05/2025\",\r\n            \"cupo\": 10,\r\n            \"estado\": 0,\r\n            \"estudiantes\": []\r\n        }\r\n    ]\r\n}"
+				},
+				{
+					"name": "Inscribirse en actividad",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/estudiante/{{estudiante_id}}/actividades/{{actividad_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiante",
+								"{{estudiante_id}}",
+								"actividades",
+								"{{actividad_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Inscribirse en actividad 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/estudiante/{{estudiante_id}}/actividades/{{actividad_id2}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"estudiante",
+						"{{estudiante_id}}",
+						"actividades",
+						"{{actividad_id2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Inscribirse en actividad",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/estudiante/{{estudiante_id}}/actividades/{{actividad_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiante",
+								"{{estudiante_id}}",
+								"actividades",
+								"{{actividad_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date"
+						}
+					],
+					"body": "{\r\n    \"id\": 2,\r\n    \"cedula\": 112233445,\r\n    \"nombre\": \"nombre\",\r\n    \"correo\": \"usuario@test.com\",\r\n    \"programa\": \"ingenieria\",\r\n    \"semestre\": 6,\r\n    \"resenias\": [],\r\n    \"actividades\": [\r\n        {\r\n            \"id\": 3,\r\n            \"titulo\": \"titulodeactividad\",\r\n            \"fecha\": \"17/05/2025\",\r\n            \"cupo\": 10,\r\n            \"estado\": 0,\r\n            \"estudiantes\": []\r\n        }\r\n    ]\r\n}"
+				},
+				{
+					"name": "Inscribirse en actividad",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/estudiante/{{estudiante_id}}/actividades/{{actividad_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiante",
+								"{{estudiante_id}}",
+								"actividades",
+								"{{actividad_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Cambiar estado",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/actividad/{{actividad_id}}/2",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"actividad",
+						"{{actividad_id}}",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Cambiar estado",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"estado\": 1\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/actividad/{{actividad_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"actividad",
+								"{{actividad_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date"
+						}
+					],
+					"body": "{\r\n    \"id\": 5,\r\n    \"titulo\": \"titulodeactividad\",\r\n    \"fecha\": \"17/05/2025\",\r\n    \"cupo\": 10,\r\n    \"estudiantes\": []\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear reseña",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comentario\": \"Excelente actividad\",\r\n    \"calificacion\": 5,\r\n    \"estudiante\": {\r\n        \"id\": {{estudiante_id}},\r\n        \"cedula\": 112233445,\r\n        \"nombre\": \"nombre\",\r\n        \"correo\": \"usuario@test.com\",\r\n        \"programa\": \"ingenieria\",\r\n        \"semestre\": 6\r\n    },\r\n    \"actividad\": {\r\n        \"id\": {{actividad_id}},\r\n        \"titulo\": \"titulodeactividad\",\r\n        \"fecha\": \"17/05/2025\",\r\n        \"cupo\": 1,\r\n        \"estado\": 2\r\n    },\r\n    \"fecha\": \"18/05/2025\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/resenia",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"resenia"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear reseña",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comentario\": \"Excelente actividad\",\r\n    \"calificacion\": 5,\r\n    \"estudiante\": {\r\n        \"id\": {{estudiante_id}},\r\n        \"cedula\": 112233445,\r\n        \"nombre\": \"nombre\",\r\n        \"correo\": \"usuario@test.com\",\r\n        \"programa\": \"ingenieria\",\r\n        \"semestre\": 6\r\n    },\r\n    \"actividad\": {\r\n        \"id\": {{actividad_id}},\r\n        \"titulo\": \"titulodeactividad\",\r\n        \"fecha\": \"17/05/2025\",\r\n        \"cupo\": 1,\r\n        \"estado\": 2\r\n    },\r\n    \"fecha\": \"18/05/2025\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/resenia",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resenia"
+							]
+						}
+					},
+					"_postman_previewlanguage": "",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Crear reseña con estudiante inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comentario\": \"Excelente actividad\",\r\n    \"calificacion\": 5,\r\n    \"estudiante\": {\r\n        \"id\": 999,\r\n        \"cedula\": 112233445,\r\n        \"nombre\": \"nombre\",\r\n        \"correo\": \"usuario@test.com\",\r\n        \"programa\": \"ingenieria\",\r\n        \"semestre\": 6\r\n    },\r\n    \"actividad\": {\r\n        \"id\": {{actividad_id}},\r\n        \"titulo\": \"titulodeactividad\",\r\n        \"fecha\": \"17/05/2025\",\r\n        \"cupo\": 1,\r\n        \"estado\": 2\r\n    },\r\n    \"fecha\": \"18/05/2025\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/resenia",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"resenia"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear reseña con estudiante inexistente",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comentario\": \"Excelente actividad\",\r\n    \"calificacion\": 5,\r\n    \"estudiante\": {\r\n        \"id\": 999,\r\n        \"cedula\": 112233445,\r\n        \"nombre\": \"nombre\",\r\n        \"correo\": \"usuario@test.com\",\r\n        \"programa\": \"ingenieria\",\r\n        \"semestre\": 6\r\n    },\r\n    \"actividad\": {\r\n        \"id\": {{actividad_id}},\r\n        \"titulo\": \"titulodeactividad\",\r\n        \"fecha\": \"17/05/2025\",\r\n        \"cupo\": 1,\r\n        \"estado\": 2\r\n    },\r\n    \"fecha\": \"18/05/2025\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/resenia",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resenia"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date"
+						}
+					],
+					"body": "{\r\n    \"statusCode\": 404,\r\n    \"message\": \"estudiante no existe\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear reseña con actividad inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comentario\": \"Excelente actividad\",\r\n    \"calificacion\": 5,\r\n    \"estudiante\": {\r\n        \"id\": {{estudiante_id}},\r\n        \"cedula\": 112233445,\r\n        \"nombre\": \"nombre\",\r\n        \"correo\": \"usuario@test.com\",\r\n        \"programa\": \"ingenieria\",\r\n        \"semestre\": 6\r\n    },\r\n    \"actividad\": {\r\n        \"id\": 999,\r\n        \"titulo\": \"titulodeactividad\",\r\n        \"fecha\": \"17/05/2025\",\r\n        \"cupo\": 1,\r\n        \"estado\": 2\r\n    },\r\n    \"fecha\": \"18/05/2025\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/resenia",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"resenia"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear reseña con actividad inexistente",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comentario\": \"Excelente actividad\",\r\n    \"calificacion\": 5,\r\n    \"estudiante\": {\r\n        \"id\": {{estudiante_id}},\r\n        \"cedula\": 112233445,\r\n        \"nombre\": \"nombre\",\r\n        \"correo\": \"usuario@test.com\",\r\n        \"programa\": \"ingenieria\",\r\n        \"semestre\": 6\r\n    },\r\n    \"actividad\": {\r\n        \"id\": 999,\r\n        \"titulo\": \"titulodeactividad\",\r\n        \"fecha\": \"17/05/2025\",\r\n        \"cupo\": 1,\r\n        \"estado\": 2\r\n    },\r\n    \"fecha\": \"18/05/2025\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/resenia",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resenia"
+							]
+						}
+					},
+					"_postman_previewlanguage": "",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Crear reseña con actividad no finalizada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"   pm.response.to.have.status(412);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comentario\": \"Excelente actividad\",\r\n    \"calificacion\": 5,\r\n    \"estudiante\": {\r\n        \"id\": {{estudiante_id}},\r\n        \"cedula\": 112233445,\r\n        \"nombre\": \"nombre\",\r\n        \"correo\": \"usuario@test.com\",\r\n        \"programa\": \"ingenieria\",\r\n        \"semestre\": 6\r\n    },\r\n    \"actividad\": {\r\n        \"id\": {{actividad_id2}},\r\n        \"titulo\": \"titulodeactividad\",\r\n        \"fecha\": \"17/05/2025\",\r\n        \"cupo\": 1,\r\n        \"estado\": 0\r\n    },\r\n    \"fecha\": \"18/05/2025\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/resenia",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"resenia"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear reseña con actividad inexistente",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comentario\": \"Excelente actividad\",\r\n    \"calificacion\": 5,\r\n    \"estudiante\": {\r\n        \"id\": {{estudiante_id}},\r\n        \"cedula\": 112233445,\r\n        \"nombre\": \"nombre\",\r\n        \"correo\": \"usuario@test.com\",\r\n        \"programa\": \"ingenieria\",\r\n        \"semestre\": 6\r\n    },\r\n    \"actividad\": {\r\n        \"id\": 999,\r\n        \"titulo\": \"titulodeactividad\",\r\n        \"fecha\": \"17/05/2025\",\r\n        \"cupo\": 1,\r\n        \"estado\": 2\r\n    },\r\n    \"fecha\": \"18/05/2025\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/resenia",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resenia"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Crear reseña con actividad no finalizada",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comentario\": \"Excelente actividad\",\r\n    \"calificacion\": 5,\r\n    \"estudiante\": {\r\n        \"id\": {{estudiante_id}},\r\n        \"cedula\": 112233445,\r\n        \"nombre\": \"nombre\",\r\n        \"correo\": \"usuario@test.com\",\r\n        \"programa\": \"ingenieria\",\r\n        \"semestre\": 6\r\n    },\r\n    \"actividad\": {\r\n        \"id\": {{actividad_id2}},\r\n        \"titulo\": \"titulodeactividad\",\r\n        \"fecha\": \"17/05/2025\",\r\n        \"cupo\": 1,\r\n        \"estado\": 0\r\n    },\r\n    \"fecha\": \"18/05/2025\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/resenia",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resenia"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date"
+						}
+					],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"actividad no finalizada\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear reseña con el estudiante no inscrito",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"   pm.response.to.have.status(412);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comentario\": \"Excelente actividad\",\r\n    \"calificacion\": 5,\r\n    \"estudiante\": {\r\n        \"id\": {{estudiante_id2}},\r\n        \"cedula\": 112233445,\r\n        \"nombre\": \"nombre\",\r\n        \"correo\": \"usuario@test.com\",\r\n        \"programa\": \"ingenieria\",\r\n        \"semestre\": 6\r\n    },\r\n    \"actividad\": {\r\n        \"id\": {{actividad_id}},\r\n        \"titulo\": \"titulodeactividad\",\r\n        \"fecha\": \"17/05/2025\",\r\n        \"cupo\": 1,\r\n        \"estado\": 2\r\n    },\r\n    \"fecha\": \"18/05/2025\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/resenia",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"resenia"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear reseña con actividad no finalizada",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comentario\": \"Excelente actividad\",\r\n    \"calificacion\": 5,\r\n    \"estudiante\": {\r\n        \"id\": {{estudiante_id}},\r\n        \"cedula\": 112233445,\r\n        \"nombre\": \"nombre\",\r\n        \"correo\": \"usuario@test.com\",\r\n        \"programa\": \"ingenieria\",\r\n        \"semestre\": 6\r\n    },\r\n    \"actividad\": {\r\n        \"id\": {{actividad_id2}},\r\n        \"titulo\": \"titulodeactividad\",\r\n        \"fecha\": \"17/05/2025\",\r\n        \"cupo\": 1,\r\n        \"estado\": 0\r\n    },\r\n    \"fecha\": \"18/05/2025\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/resenia",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resenia"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date"
+						}
+					],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"actividad no finalizada\"\n}"
+				},
+				{
+					"name": "Crear reseña con el estudiante no inscrito",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comentario\": \"Excelente actividad\",\r\n    \"calificacion\": 5,\r\n    \"estudiante\": {\r\n        \"id\": {{estudiante_id2}},\r\n        \"cedula\": 112233445,\r\n        \"nombre\": \"nombre\",\r\n        \"correo\": \"usuario@test.com\",\r\n        \"programa\": \"ingenieria\",\r\n        \"semestre\": 6\r\n    },\r\n    \"actividad\": {\r\n        \"id\": {{actividad_id}},\r\n        \"titulo\": \"titulodeactividad\",\r\n        \"fecha\": \"17/05/2025\",\r\n        \"cupo\": 1,\r\n        \"estado\": 2\r\n    },\r\n    \"fecha\": \"18/05/2025\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/resenia",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resenia"
+							]
+						}
+					},
+					"_postman_previewlanguage": "",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	]
+}

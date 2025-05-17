@@ -29,8 +29,8 @@ export class ActividadService {
         return await this.actividadRepository.save(actividad);
    }
 
-   async cambiarEstado(id: number, estado: number): Promise<ActividadEntity> {
-        const persistedActividad = await this.actividadRepository.findOne({where:{id}, relations:["estudiantes"]});
+   async cambiarEstado(ida: number, estado: number): Promise<ActividadEntity> {
+        const persistedActividad = await this.actividadRepository.findOne({where:{id:ida}, relations:["estudiantes"]});
         if (!persistedActividad)
           throw new BusinessLogicException("No se encontró la actividad", BusinessError.NOT_FOUND);
         
@@ -41,8 +41,9 @@ export class ActividadService {
             throw new BusinessLogicException("El cupo no esta lleno, no se puede finalizar", BusinessError.PRECONDITION_FAILED);
 
         persistedActividad.estado = estado
+        //console.log(persistedActividad);
         
-        return await this.actividadRepository.save({...persistedActividad});
+        return await this.actividadRepository.save(persistedActividad);
     }
 
     async findAllActividadesByDate(fecha: string): Promise<ActividadEntity[]> {

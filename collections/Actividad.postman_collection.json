@@ -1,0 +1,432 @@
+{
+	"info": {
+		"_postman_id": "05bc2548-acee-4a07-a9f7-002a960f953c",
+		"name": "Actividad",
+		"description": "Dentro de actividad se incluyen pruebas para crear la actividad, cambiar estado correctamente y encontrar todas las actividades a partir de una fecha.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32524555"
+	},
+	"item": [
+		{
+			"name": "Crear actividad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"actividad_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"titulo\": \"titulodeactividad\",\r\n      \"fecha\": \"17/05/2025\",\r\n      \"cupo\": 10,\r\n      \"estado\": 0,\r\n      \"estudiantes\": [],\r\n      \"resenias\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/actividad",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"actividad"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear actividad",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"titulo\": \"titulodeactividad\",\r\n      \"fecha\": \"17/05/2025\",\r\n      \"cupo\": 10,\r\n      \"estado\": 0,\r\n      \"estudiantes\": [],\r\n      \"resenias\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/actividad",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"actividad"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date"
+						}
+					],
+					"body": "{\n    \"id\": 1,\n    \"titulo\": \"titulodeactividad\",\n    \"fecha\": \"17/05/2025\",\n    \"cupo\": 10,\n    \"estado\": 0,\n    \"resenias\": [],\n    \"estudiantes\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear actividad con titulo invalido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"   pm.response.to.have.status(412);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"titulo\": \"titulo?\",\r\n      \"fecha\": \"17/05/2025\",\r\n      \"cupo\": 10,\r\n      \"estado\": 0,\r\n      \"estudiantes\": [],\r\n      \"resenias\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/actividad",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"actividad"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear actividad con titulo invalido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"titulo\": \"titulo?\",\r\n      \"fecha\": \"17/05/2025\",\r\n      \"cupo\": 10,\r\n      \"estado\": 0,\r\n      \"estudiantes\": [],\r\n      \"resenias\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/actividad",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"actividad"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date"
+						}
+					],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"El titulo tiene caracteres especiales\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear actividad con titulo corto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"   pm.response.to.have.status(412);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"titulo\": \"titulo\",\r\n      \"fecha\": \"17/05/2025\",\r\n      \"cupo\": 10,\r\n      \"estado\": 0,\r\n      \"estudiantes\": [],\r\n      \"resenias\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/actividad",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"actividad"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear actividad con titulo corto",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"titulo\": \"titulo\",\r\n      \"fecha\": \"17/05/2025\",\r\n      \"cupo\": 10,\r\n      \"estado\": 0,\r\n      \"estudiantes\": [],\r\n      \"resenias\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/actividad",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"actividad"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Crear actividad con estado invalido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"   pm.response.to.have.status(412);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"titulo\": \"titulodeactividad\",\r\n      \"fecha\": \"17/05/2025\",\r\n      \"cupo\": 10,\r\n      \"estado\": 1,\r\n      \"estudiantes\": [],\r\n      \"resenias\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/actividad",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"actividad"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear actividad con estado invalido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"titulo\": \"titulodeactividad\",\r\n      \"fecha\": \"17/05/2025\",\r\n      \"cupo\": 10,\r\n      \"estado\": 1,\r\n      \"estudiantes\": [],\r\n      \"resenias\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/actividad",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"actividad"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date"
+						}
+					],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"No se creo la actividad como abierta\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Cambiar estado",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/actividad/{{actividad_id}}/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"actividad",
+						"{{actividad_id}}",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Cambiar estado",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"estado\": 1\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/actividad/{{actividad_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"actividad",
+								"{{actividad_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date"
+						}
+					],
+					"body": "{\r\n    \"id\": 5,\r\n    \"titulo\": \"titulodeactividad\",\r\n    \"fecha\": \"17/05/2025\",\r\n    \"cupo\": 10,\r\n    \"estudiantes\": []\r\n}"
+				}
+			]
+		},
+		{
+			"name": "find all actividades by fecha",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fecha\": \"17/05/2025\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/actividad",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"actividad"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "find all actividades by fecha",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fecha\": \"17/05/2025\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/actividad",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"actividad"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}

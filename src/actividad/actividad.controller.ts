@@ -17,13 +17,13 @@ export class ActividadController {
     return await this.actividadService.crearActividad(actividad);
     }
 
-    @Put(':actividadId')
-    async update(@Param('actividadId') actividadId: number, @Body('estado') estado: number) {
+    @Put(':actividadId/:estado')
+    async cambiarEstado(@Param('actividadId') actividadId: number, @Param('estado') estado: number) {
         return await this.actividadService.cambiarEstado(actividadId, estado);
     }
 
-    @Get(':fecha')
-    async findAllActividadesByDate(@Param('fecha') fecha: string){
+    @Get()
+    async findAllActividadesByDate(@Body('fecha') fecha: string){
     return await this.actividadService.findAllActividadesByDate(fecha);
     }
 
